@@ -1,15 +1,18 @@
 // Function to find locations at a given time
 function findLocationsAtTime(inputTime) {
+    // Trim the input to remove unnecessary spaces
+    inputTime = inputTime.trim();
+
     // Parse the input time (e.g., "3 PM" or "10 AM")
-    const timeRegex = /^(\d{1,2})\s*(AM|PM)$/i;  // Ensure the format is a number followed by AM/PM, case insensitive
-    const match = inputTime.trim().match(timeRegex);
-    
+    const timeRegex = /^(\d{1,2})\s*(AM|PM)$/i;  // Ensures format: Number followed by AM/PM (case-insensitive)
+    const match = inputTime.match(timeRegex);
+
     if (!match) {
         return "Invalid time format. Please use format like '3 PM' or '10 AM'";
     }
 
     let hour = parseInt(match[1]);
-    const meridiem = match[2].toUpperCase();
+    const meridiem = match[2].toUpperCase(); // Converts AM/PM to uppercase for consistent comparison
     
     // Convert to 24-hour format
     if (meridiem === 'PM' && hour !== 12) {
@@ -53,7 +56,7 @@ function findLocationsAtTime(inputTime) {
 document.getElementById('timeForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Get the input time from the user
+    // Get the input time from the user and trim it for spaces
     const inputTime = document.getElementById('timeInput').value.trim();
 
     // Call the function to get matching locations
