@@ -16,9 +16,9 @@ function findLocationsAtTime(inputTime) {
     
     // Convert to 24-hour format
     if (meridiem === 'PM' && hour !== 12) {
-        hour += 12;
+        hour += 12; // Add 12 to hour if PM and not 12
     } else if (meridiem === 'AM' && hour === 12) {
-        hour = 0;
+        hour = 0; // Convert 12 AM to 0
     }
 
     console.log(`Parsed Time: ${hour} ${meridiem}`); // Debugging line to check hour parsing
@@ -41,7 +41,7 @@ function findLocationsAtTime(inputTime) {
             locations.push({
                 timezone: timezone,
                 location: location,
-                fullTime: timeInZone.format('h:mm A')
+                fullTime: timeInZone.format('h:mm A') // 12-hour format with AM/PM
             });
         }
     });
