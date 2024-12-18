@@ -61,16 +61,62 @@
             border-radius: 5px;
             text-align: center;
         }
+        .introduction {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .instructions {
+            text-align: left;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .instructions h3 {
+            color: #1a73e8;
+            margin-top: 0;
+        }
+        
+        .instructions ol {
+            margin-bottom: 10px;
+        }
+        
+        .instructions p {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .credit {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Time to Location Converter</h1>
+        <div class="introduction">
+            <p>Find out which parts of the world are currently experiencing a specific hour of the day. This tool helps you discover locations where it's the exact time you're looking for.</p>
+            
+            <div class="instructions">
+                <h3>How to use:</h3>
+                <ol>
+                    <li>Enter a time in the format "hour AM/PM" (e.g., "3 PM" or "10 AM")</li>
+                    <li>Click "Find Locations" to see all places where it's currently that time</li>
+                </ol>
+                <p>Examples: "2 PM", "11 AM", "7 PM"</p>
+            </div>
+        </div>
         <form id="timeForm">
             <input type="text" id="timeInput" placeholder="Enter time (e.g., 3 PM)" required>
             <button type="submit">Find Locations</button>
         </form>
         <ul id="result"></ul>
+        <p class="credit">Made by Xirui Lin</p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
