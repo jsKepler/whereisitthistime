@@ -1,3 +1,34 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Your code here
+    document.getElementById('timeForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const inputTime = document.getElementById('timeInput').value.trim();
+
+        const locations = findLocationsAtTime(inputTime);
+
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        if (Array.isArray(locations)) {
+            locations.forEach(location => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('result-item');
+                resultItem.innerHTML = `
+                    <h3>${location.location}</h3>
+                    <p>Timezone: ${location.timezone}</p>
+                    <p class="time">${location.fullTime}</p>
+                `;
+                resultsContainer.appendChild(resultItem);
+            });
+        } else {
+            const noResults = document.createElement('div');
+            noResults.classList.add('no-results');
+            noResults.textContent = locations;
+            resultsContainer.appendChild(noResults);
+        }
+    });
+});
 // Function to find locations at a given time
 function findLocationsAtTime(inputTime) {
     // Trim the input to remove unnecessary spaces
