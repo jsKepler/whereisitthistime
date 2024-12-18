@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.34/moment-timezone-with-data.min.js"></script>
-    <script src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Locations by Time</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Where is it this time?</title>
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.34/moment-timezone-with-data.min.js"></script>
+    <script src="script.js"></script>  <!-- Your custom JS file -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Find Locations by Time</h1>
-            <p>Enter a time (e.g., "3 PM") and see where it's the same time in different regions around the world.</p>
-        </header>
+    <h1>Find Locations at a Given Time</h1>
+    <form id="timeForm">
+        <label for="timeInput">Enter a time (e.g., 3 PM): </label>
+        <input type="text" id="timeInput" required>
+        <button type="submit">Submit</button>
+    </form>
 
-        <form id="timeForm">
-            <input type="text" id="timeInput" placeholder="Enter time (e.g., 3 PM)" required>
-            <button type="submit">Find Locations</button>
-        </form>
-
-        <div id="results" class="results">
-            <!-- Results will be displayed here -->
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <div id="results"></div>
 </body>
 </html>
