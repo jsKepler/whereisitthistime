@@ -48,7 +48,9 @@ function findLocationsAtTime(inputTime) {
 
 document.getElementById('timeForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const timeInput = document.getElementById('timeInput').value;
+    const hour = document.getElementById('hourInput').value;
+    const meridian = document.getElementById('meridianInput').value;
+    const timeInput = `${hour} ${meridian}`;
     const locations = findLocationsAtTime(timeInput);
     const resultList = document.getElementById('result');
     
