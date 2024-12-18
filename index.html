@@ -4,151 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time to Location Converter</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f2f5;
-        }
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            max-width: 1200px;
-        }
+<style>
+    /* ... existing styles ... */
+    
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        max-width: 1200px;  /* Increased max-width to accommodate two columns */
+    }
+
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+
+    .globe-section {
+        padding: 20px;
+    }
+
+    .globe-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .content-section {
+        padding: 20px;
+    }
+
+    /* Media query for mobile responsiveness */
+    @media (max-width: 768px) {
         .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
+            grid-template-columns: 1fr;
         }
+        
         .globe-section {
-            padding: 20px;
+            order: 2;  /* Move globe below content on mobile */
         }
-        .globe-image {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+        
         .content-section {
-            padding: 20px;
+            order: 1;
         }
-        h1 {
-            color: #1a73e8;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        input[type="text"] {
-            padding: 10px 15px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            width: 200px;
-        }
-        button {
-            padding: 12px 25px;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #1557b0;
-        }
-        #result {
-            margin-top: 30px;
-            list-style-type: none;
-            padding: 0;
-        }
-        #result li {
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .introduction {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .instructions {
-            text-align: left;
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        
-        .instructions h3 {
-            color: #1a73e8;
-            margin-top: 0;
-        }
-        
-        .instructions ol {
-            margin-bottom: 10px;
-        }
-        
-        .instructions p {
-            color: #666;
-            font-style: italic;
-        }
-        
-        .credit {
-            font-style: italic;
-            color: #666;
-            margin-top: 10px;
-            font-size: 0.9em;
-        }
-        
-        select {
-            padding: 10px 15px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            background-color: white;
-            cursor: pointer;
-        }
-        
-        select:focus {
-            border-color: #1a73e8;
-            outline: none;
-        }
-        
-        /* Media query for mobile responsiveness */
-        @media (max-width: 768px) {
-            .grid-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .globe-section {
-                order: 2;  /* Move globe below content on mobile */
-            }
-            
-            .content-section {
-                order: 1;
-            }
-        }
-    </style>
+    }
+
+    .clock {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background-color: white;
+        border: 10px solid #1a73e8;
+        position: relative;
+        margin: 0 auto;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .hand {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform-origin: bottom;
+        background-color: #333;
+        border-radius: 4px;
+    }
+
+    .hour-hand {
+        width: 4px;
+        height: 25%;
+        background-color: #333;
+    }
+
+    .minute-hand {
+        width: 3px;
+        height: 35%;
+        background-color: #666;
+    }
+
+    .second-hand {
+        width: 2px;
+        height: 40%;
+        background-color: #1a73e8;
+    }
+
+    .center-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #1a73e8;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .number {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    /* Position numbers around the clock */
+    .number1 { transform: rotate(30deg); }
+    .number2 { transform: rotate(60deg); }
+    .number3 { transform: rotate(90deg); }
+    .number4 { transform: rotate(120deg); }
+    .number5 { transform: rotate(150deg); }
+    .number6 { transform: rotate(180deg); }
+    .number7 { transform: rotate(210deg); }
+    .number8 { transform: rotate(240deg); }
+    .number9 { transform: rotate(270deg); }
+    .number10 { transform: rotate(300deg); }
+    .number11 { transform: rotate(330deg); }
+    .number12 { transform: rotate(0deg); }
+
+    /* Rotate the numbers back so they're readable */
+    .number > span {
+        display: block;
+        transform: rotate(-30deg);
+    }
+</style>
 </head>
 <body>
     <div class="container">
         <div class="grid-layout">
             <div class="globe-section">
-                <img src="https://24timezones.com/system/world_clock_map.gif" alt="World Time Zone Map" class="globe-image">
+                <div class="clock">
+                    <div class="hand hour-hand"></div>
+                    <div class="hand minute-hand"></div>
+                    <div class="hand second-hand"></div>
+                    <div class="center-dot"></div>
+                    <!-- Clock numbers -->
+                    <div class="number number1">1</div>
+                    <div class="number number2">2</div>
+                    <div class="number number3">3</div>
+                    <div class="number number4">4</div>
+                    <div class="number number5">5</div>
+                    <div class="number number6">6</div>
+                    <div class="number number7">7</div>
+                    <div class="number number8">8</div>
+                    <div class="number number9">9</div>
+                    <div class="number number10">10</div>
+                    <div class="number number11">11</div>
+                    <div class="number number12">12</div>
+                </div>
             </div>
             <div class="content-section">
                 <h1>Time to Location Converter</h1>
@@ -158,7 +164,7 @@
                     <div class="instructions">
                         <h3>How to use:</h3>
                         <ol>
-                            <li>Enter a time in the format "hour AM/PM" (e.g., "3 PM" or "10 AM")</li>
+                            <li>Enter a time and period in the dropdown boxes below</li>
                             <li>Click "Find Locations" to see all places where it's currently that time</li>
                         </ol>
                         <p>Examples: "2 PM", "11 AM", "7 PM"</p>
