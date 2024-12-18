@@ -18,10 +18,11 @@ function findLocationsAtTime(inputTime) {
     if (meridiem === 'PM' && hour !== 12) {
         hour += 12; // Add 12 to hour if PM and not 12
     } else if (meridiem === 'AM' && hour === 12) {
-        hour = 0; // Convert 12 AM to 0
+        hour = 0; // Convert 12 AM to 0 (midnight)
     }
 
-    console.log(`Parsed Time: ${hour} ${meridiem}`); // Debugging line to check hour parsing
+    // Debugging line to check hour parsing
+    console.log(`Parsed Time: ${hour} ${meridiem}`);
 
     const locations = [];
     const currentDate = new Date();
