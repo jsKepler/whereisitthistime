@@ -89,6 +89,15 @@ function updateClock() {
     secondHand.style.transform = `translateX(-50%) rotate(${secondDegrees}deg)`;
     minuteHand.style.transform = `translateX(-50%) rotate(${minuteDegrees}deg)`;
     hourHand.style.transform = `translateX(-50%) rotate(${hourDegrees}deg)`;
+
+    // Update digital display
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const displayHours = hours % 12 || 12; // Convert to 12-hour format
+    const displayMinutes = minutes.toString().padStart(2, '0');
+    const displaySeconds = seconds.toString().padStart(2, '0');
+    
+    document.getElementById('digital-time').textContent = 
+        `${displayHours}:${displayMinutes}:${displaySeconds} ${ampm}`;
 }
 
 // Update clock every second
