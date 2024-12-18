@@ -116,7 +116,6 @@
             inset 0 0 30px rgba(0, 0, 0, 0.05);
         position: relative;
         margin: 40px auto;
-        transition: transform 0.3s ease;
     }
 
     .clock:hover {
@@ -164,26 +163,33 @@
 
     .number {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform-origin: 0 0;
         font-size: 1.2rem;
         font-weight: 600;
         color: #2d3748;
     }
 
-    .number1 { transform: rotate(30deg) translate(0, -130px) rotate(-30deg); }
-    .number2 { transform: rotate(60deg) translate(0, -130px) rotate(-60deg); }
-    .number3 { transform: rotate(90deg) translate(0, -130px) rotate(-90deg); }
-    .number4 { transform: rotate(120deg) translate(0, -130px) rotate(-120deg); }
-    .number5 { transform: rotate(150deg) translate(0, -130px) rotate(-150deg); }
-    .number6 { transform: rotate(180deg) translate(0, -130px) rotate(-180deg); }
-    .number7 { transform: rotate(210deg) translate(0, -130px) rotate(-210deg); }
-    .number8 { transform: rotate(240deg) translate(0, -130px) rotate(-240deg); }
-    .number9 { transform: rotate(270deg) translate(0, -130px) rotate(-270deg); }
-    .number10 { transform: rotate(300deg) translate(0, -130px) rotate(-300deg); }
-    .number11 { transform: rotate(330deg) translate(0, -130px) rotate(-330deg); }
-    .number12 { transform: translate(0, -130px); }
+    .number1 { transform: rotate(30deg) translate(115px, -8px); }
+    .number2 { transform: rotate(60deg) translate(115px, -8px); }
+    .number3 { transform: rotate(90deg) translate(115px, -8px); }
+    .number4 { transform: rotate(120deg) translate(115px, -8px); }
+    .number5 { transform: rotate(150deg) translate(115px, -8px); }
+    .number6 { transform: rotate(180deg) translate(115px, -8px); }
+    .number7 { transform: rotate(210deg) translate(115px, -8px); }
+    .number8 { transform: rotate(240deg) translate(115px, -8px); }
+    .number9 { transform: rotate(270deg) translate(115px, -8px); }
+    .number10 { transform: rotate(300deg) translate(115px, -8px); }
+    .number11 { transform: rotate(330deg) translate(115px, -8px); }
+    .number12 { transform: rotate(0deg) translate(115px, -8px); }
+
+    .number::before {
+        content: attr(data-number);
+        position: absolute;
+        transform: rotate(-90deg);
+        transform-origin: center;
+    }
 
     .credit {
         text-align: center;
@@ -263,19 +269,19 @@
                     <div class="hand minute-hand"></div>
                     <div class="hand second-hand"></div>
                     <div class="center-dot"></div>
-                    <!-- Clock numbers with spans to help with positioning -->
-                    <div class="number number1">1</div>
-                    <div class="number number2">2</div>
-                    <div class="number number3">3</div>
-                    <div class="number number4">4</div>
-                    <div class="number number5">5</div>
-                    <div class="number number6">6</div>
-                    <div class="number number7">7</div>
-                    <div class="number number8">8</div>
-                    <div class="number number9">9</div>
-                    <div class="number number10">10</div>
-                    <div class="number number11">11</div>
-                    <div class="number number12">12</div>
+                    <!-- Updated number elements -->
+                    <div class="number number1" data-number="1"></div>
+                    <div class="number number2" data-number="2"></div>
+                    <div class="number number3" data-number="3"></div>
+                    <div class="number number4" data-number="4"></div>
+                    <div class="number number5" data-number="5"></div>
+                    <div class="number number6" data-number="6"></div>
+                    <div class="number number7" data-number="7"></div>
+                    <div class="number number8" data-number="8"></div>
+                    <div class="number number9" data-number="9"></div>
+                    <div class="number number10" data-number="10"></div>
+                    <div class="number number11" data-number="11"></div>
+                    <div class="number number12" data-number="12"></div>
                 </div>
             </div>
             <div class="content-section">
