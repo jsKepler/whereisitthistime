@@ -1,6 +1,3 @@
-// Change the import to require
-const moment = require('moment-timezone');
-
 function findLocationsAtTime(inputTime) {
     // Parse the input time (e.g., "3 PM" or "10 AM")
     const timeRegex = /(\d+)\s*(AM|PM)/i;
