@@ -5,62 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time to Location Converter</title>
 <style>
-    /* ... existing styles ... */
-    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        margin: 0;
+        padding: 40px;
+        background: linear-gradient(135deg, #f6f9fc 0%, #eef2f7 100%);
+        min-height: 100vh;
+        color: #1a2b3b;
+    }
+
     .container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(10px);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1a2b3b;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    .introduction p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #4a5568;
+    }
+
+    .instructions {
+        background: #f8fafc;
+        padding: 24px;
+        border-radius: 16px;
+        margin: 24px 0;
+        border: 1px solid #e2e8f0;
+    }
+
+    .instructions h3 {
+        color: #2d3748;
+        font-size: 1.25rem;
+        margin-top: 0;
+    }
+
+    select {
+        padding: 12px 20px;
+        font-size: 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
         background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        max-width: 1200px;  /* Increased max-width to accommodate two columns */
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 120px;
     }
 
-    .grid-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        align-items: start;
+    select:hover {
+        border-color: #cbd5e0;
     }
 
-    .globe-section {
-        padding: 20px;
+    select:focus {
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+        outline: none;
     }
 
-    .globe-image {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    button {
+        background: #4299e1;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 16px;
     }
 
-    .content-section {
-        padding: 20px;
+    button:hover {
+        background: #3182ce;
+        transform: translateY(-1px);
     }
 
-    /* Media query for mobile responsiveness */
-    @media (max-width: 768px) {
-        .grid-layout {
-            grid-template-columns: 1fr;
-        }
-        
-        .globe-section {
-            order: 2;  /* Move globe below content on mobile */
-        }
-        
-        .content-section {
-            order: 1;
-        }
+    #result {
+        margin-top: 24px;
+    }
+
+    #result li {
+        background: #f8fafc;
+        padding: 16px;
+        margin: 8px 0;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+    }
+
+    #result li:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .clock {
         width: 300px;
         height: 300px;
+        border: 15px solid #4299e1;
         border-radius: 50%;
-        background-color: white;
-        border: 10px solid #1a73e8;
+        background: white;
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.1),
+            inset 0 0 30px rgba(0, 0, 0, 0.05);
         position: relative;
-        margin: 0 auto;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        margin: 40px auto;
     }
 
     .hand {
@@ -68,37 +128,38 @@
         bottom: 50%;
         left: 50%;
         transform-origin: bottom;
-        background-color: #333;
         border-radius: 4px;
+        z-index: 10;
     }
 
     .hour-hand {
         width: 4px;
         height: 25%;
-        background-color: #333;
+        background: #2d3748;
     }
 
     .minute-hand {
         width: 3px;
         height: 35%;
-        background-color: #666;
+        background: #4a5568;
     }
 
     .second-hand {
         width: 2px;
         height: 40%;
-        background-color: #1a73e8;
+        background: #4299e1;
     }
 
     .center-dot {
         width: 12px;
         height: 12px;
+        background: #4299e1;
         border-radius: 50%;
-        background-color: #1a73e8;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 11;
     }
 
     .number {
@@ -106,29 +167,36 @@
         width: 100%;
         height: 100%;
         text-align: center;
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #333;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2d3748;
     }
 
-    /* Position numbers around the clock */
-    .number1 { transform: rotate(30deg); }
-    .number2 { transform: rotate(60deg); }
-    .number3 { transform: rotate(90deg); }
-    .number4 { transform: rotate(120deg); }
-    .number5 { transform: rotate(150deg); }
-    .number6 { transform: rotate(180deg); }
-    .number7 { transform: rotate(210deg); }
-    .number8 { transform: rotate(240deg); }
-    .number9 { transform: rotate(270deg); }
-    .number10 { transform: rotate(300deg); }
-    .number11 { transform: rotate(330deg); }
-    .number12 { transform: rotate(0deg); }
+    .credit {
+        text-align: center;
+        margin-top: 30px;
+        color: #718096;
+        font-size: 0.9rem;
+    }
 
-    /* Rotate the numbers back so they're readable */
-    .number > span {
-        display: block;
-        transform: rotate(-30deg);
+    @media (max-width: 768px) {
+        body {
+            padding: 20px;
+        }
+
+        .container {
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .clock {
+            width: 250px;
+            height: 250px;
+            border-width: 12px;
+        }
     }
 </style>
 </head>
