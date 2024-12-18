@@ -46,4 +46,23 @@ function findLocationsAtTime(inputTime) {
 // const locations = findLocationsAtTime("3 PM");
 // console.log(locations);
 
-module.exports = findLocationsAtTime;
+document.getElementById('timeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const timeInput = document.getElementById('timeInput').value;
+    const locations = findLocationsAtTime(timeInput);
+    const resultList = document.getElementById('result');
+    
+    resultList.innerHTML = '';
+    
+    if (Array.isArray(locations)) {
+        locations.forEach(loc => {
+            const li = document.createElement('li');
+            li.textContent = `${loc.location} (${loc.timezone}) - ${loc.fullTime}`;
+            resultList.appendChild(li);
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = locations;
+        resultList.appendChild(li);
+    }
+});
