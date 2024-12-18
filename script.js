@@ -1,8 +1,8 @@
 // Function to find locations at a given time
 function findLocationsAtTime(inputTime) {
     // Parse the input time (e.g., "3 PM" or "10 AM")
-    const timeRegex = /(\d+)\s*(AM|PM)/i;
-    const match = inputTime.match(timeRegex);
+    const timeRegex = /^(\d{1,2})\s*(AM|PM)$/i;  // Ensure the format is a number followed by AM/PM, case insensitive
+    const match = inputTime.trim().match(timeRegex);
     
     if (!match) {
         return "Invalid time format. Please use format like '3 PM' or '10 AM'";
