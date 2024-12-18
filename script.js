@@ -76,17 +76,19 @@ function updateClock() {
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    const secondDegrees = ((seconds / 60) * 360) + 90;
+    // Calculate degrees for each hand
+    const secondDegrees = ((seconds / 60) * 360) + 90; // Add 90 to start from 12 o'clock
     const minuteDegrees = ((minutes / 60) * 360) + ((seconds/60)*6) + 90;
-    const hourDegrees = ((hours / 12) * 360) + ((minutes/60)*30) + 90;
+    const hourDegrees = ((hours % 12) / 12 * 360) + ((minutes/60)*30) + 90;
 
     const secondHand = document.querySelector('.second-hand');
     const minuteHand = document.querySelector('.minute-hand');
     const hourHand = document.querySelector('.hour-hand');
 
-    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
-    minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
-    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    // Apply the rotations
+    secondHand.style.transform = `translateX(-50%) rotate(${secondDegrees}deg)`;
+    minuteHand.style.transform = `translateX(-50%) rotate(${minuteDegrees}deg)`;
+    hourHand.style.transform = `translateX(-50%) rotate(${hourDegrees}deg)`;
 }
 
 // Update clock every second
