@@ -18,6 +18,8 @@ function findLocationsAtTime(inputTime) {
         hour = 0;
     }
 
+    console.log(`Parsed Time: ${hour} ${meridiem}`); // Debugging line to check hour parsing
+
     const locations = [];
     const currentDate = new Date();
     
@@ -27,6 +29,9 @@ function findLocationsAtTime(inputTime) {
     // Check each timezone
     allTimezones.forEach(timezone => {
         const timeInZone = moment.tz(currentDate, timezone);
+        console.log(`Checking timezone: ${timezone}, Current time: ${timeInZone.format('h:mm A')}`); // Debugging line
+        
+        // Check if the hour matches the input hour
         if (timeInZone.hour() === hour) {
             // Get the location name from timezone
             const location = timezone.replace(/_/g, ' ').split('/').pop();
@@ -38,6 +43,7 @@ function findLocationsAtTime(inputTime) {
         }
     });
 
+    console.log(locations); // Debugging line to check results
     return locations.length > 0 
         ? locations 
         : "No locations found for the specified time";
