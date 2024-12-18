@@ -1,5 +1,4 @@
-const moment = require('moment-timezone');
-
+// Function to find locations at a given time
 function findLocationsAtTime(inputTime) {
     // Parse the input time (e.g., "3 PM" or "10 AM")
     const timeRegex = /(\d+)\s*(AM|PM)/i;
@@ -44,8 +43,35 @@ function findLocationsAtTime(inputTime) {
         : "No locations found for the specified time";
 }
 
-// Example usage:
-// const locations = findLocationsAtTime("3 PM");
-// console.log(locations);
+// Handle form submission
+document.getElementById('timeForm').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-module.exports = findLocationsAtTime;
+    // Get the input time from the user
+    const inputTime = document.getElementById('timeInput').value.trim();
+
+    // Call the function to get matching locations
+    const locations = findLocationsAtTime(inputTime);
+
+    // Display results
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = ''; // Clear previous results
+
+    if (Array.isArray(locations)) {
+        locations.forEach(location => {
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('result-item');
+            resultItem.innerHTML = `
+                <h3>${location.location}</h3>
+                <p>Timezone: ${location.timezone}</p>
+                <p class="time">${location.fullTime}</p>
+            `;
+            resultsContainer.appendChild(resultItem);
+        });
+    } else {
+        const noResults = document.createElement('div');
+        noResults.classList.add('no-results');
+        noResults.textContent = locations;
+        resultsContainer.appendChild(noResults);
+    }
+});
