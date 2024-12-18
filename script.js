@@ -1,54 +1,51 @@
-// Handle form submission
-document.getElementById('timeForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+const moment = require('moment-timezone');
 
-    // Get the input time from the user
-    const inputTime = document.getElementById('timeInput').value.trim();
+function findLocationsAtTime(inputTime) {
+    // Parse the input time (e.g., "3 PM" or "10 AM")
+    const timeRegex = /(\d+)\s*(AM|PM)/i;
+    const match = inputTime.match(timeRegex);
     
-    // Parse the input time (assumes 12-hour format with AM/PM)
-    const inputDate = new Date(`1970-01-01T${inputTime}:00`);
-    
-    if (isNaN(inputDate)) {
-        alert("Please enter a valid time.");
-        return;
+    if (!match) {
+        return "Invalid time format. Please use format like '3 PM' or '10 AM'";
     }
 
-    // Define the regions and their time zone offsets
-    const timeZones = [
-        { region: "China", timeZone: "Asia/Shanghai" },
-        { region: "United Kingdom", timeZone: "Europe/London" },
-        { region: "United States (Eastern Time)", timeZone: "America/New_York" },
-        { region: "United States (Pacific Time)", timeZone: "America/Los_Angeles" },
-        { region: "Germany", timeZone: "Europe/Berlin" },
-        { region: "Australia", timeZone: "Australia/Sydney" },
-        // Add more regions and time zones as needed
-    ];
+    let hour = parseInt(match[1]);
+    const meridiem = match[2].toUpperCase();
+    
+    // Convert to 24-hour format
+    if (meridiem === 'PM' && hour !== 12) {
+        hour += 12;
+    } else if (meridiem === 'AM' && hour === 12) {
+        hour = 0;
+    }
 
-    // Get the result element where we display the regions
-    const resultList = document.getElementById('result');
-    resultList.innerHTML = ''; // Clear previous results
-
-    // Check each region's current time
-    timeZones.forEach(function (zone) {
-        const localTime = new Date(inputDate.toLocaleString("en-US", { timeZone: zone.timeZone }));
-        
-        const formattedLocalTime = localTime.toLocaleString("en-US", {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true
-        });
-
-        // Compare the formatted input time with the local time of the region
-        if (formattedLocalTime === inputTime) {
-            const li = document.createElement('li');
-            li.textContent = zone.region;
-            resultList.appendChild(li);
+    const locations = [];
+    const currentDate = new Date();
+    
+    // Get all timezone names
+    const allTimezones = moment.tz.names();
+    
+    // Check each timezone
+    allTimezones.forEach(timezone => {
+        const timeInZone = moment.tz(currentDate, timezone);
+        if (timeInZone.hour() === hour) {
+            // Get the location name from timezone
+            const location = timezone.replace(/_/g, ' ').split('/').pop();
+            locations.push({
+                timezone: timezone,
+                location: location,
+                fullTime: timeInZone.format('h:mm A')
+            });
         }
     });
 
-    if (resultList.innerHTML === '') {
-        const li = document.createElement('li');
-        li.textContent = "No regions found for this time.";
-        resultList.appendChild(li);
-    }
-});
+    return locations.length > 0 
+        ? locations 
+        : "No locations found for the specified time";
+}
+
+// Example usage:
+// const locations = findLocationsAtTime("3 PM");
+// console.log(locations);
+
+module.exports = findLocationsAtTime;
