@@ -171,24 +171,21 @@
         color: #2d3748;
     }
 
-    .number1 { transform: rotate(-60deg) translate(115px, -8px); }
-    .number2 { transform: rotate(-30deg) translate(115px, -8px); }
-    .number3 { transform: rotate(0deg) translate(115px, -8px); }
-    .number4 { transform: rotate(30deg) translate(115px, -8px); }
-    .number5 { transform: rotate(60deg) translate(115px, -8px); }
-    .number6 { transform: rotate(90deg) translate(115px, -8px); }
-    .number7 { transform: rotate(120deg) translate(115px, -8px); }
-    .number8 { transform: rotate(150deg) translate(115px, -8px); }
-    .number9 { transform: rotate(180deg) translate(115px, -8px); }
-    .number10 { transform: rotate(210deg) translate(115px, -8px); }
-    .number11 { transform: rotate(240deg) translate(115px, -8px); }
-    .number12 { transform: rotate(-90deg) translate(115px, -8px); }
+    .number1 { transform: rotate(-60deg) translate(115px, -8px) rotate(60deg); }
+    .number2 { transform: rotate(-30deg) translate(115px, -8px) rotate(30deg); }
+    .number3 { transform: rotate(0deg) translate(115px, -8px) rotate(0deg); }
+    .number4 { transform: rotate(30deg) translate(115px, -8px) rotate(-30deg); }
+    .number5 { transform: rotate(60deg) translate(115px, -8px) rotate(-60deg); }
+    .number6 { transform: rotate(90deg) translate(115px, -8px) rotate(-90deg); }
+    .number7 { transform: rotate(120deg) translate(115px, -8px) rotate(-120deg); }
+    .number8 { transform: rotate(150deg) translate(115px, -8px) rotate(-150deg); }
+    .number9 { transform: rotate(180deg) translate(115px, -8px) rotate(-180deg); }
+    .number10 { transform: rotate(210deg) translate(115px, -8px) rotate(-210deg); }
+    .number11 { transform: rotate(240deg) translate(115px, -8px) rotate(-240deg); }
+    .number12 { transform: rotate(-90deg) translate(115px, -8px) rotate(90deg); }
 
     .number::before {
-        content: attr(data-number);
-        position: absolute;
-        transform: rotate(90deg);
-        transform-origin: center;
+        content: none;
     }
 
     .credit {
@@ -258,6 +255,23 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
     }
+
+    .digital-display {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px 30px;
+        border-radius: 12px;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(66, 153, 225, 0.2);
+    }
+
+    #digital-time {
+        font-family: 'Inter', monospace;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #2d3748;
+        letter-spacing: 2px;
+    }
 </style>
 </head>
 <body>
@@ -282,6 +296,9 @@
                     <div class="number number10" data-number="10"></div>
                     <div class="number number11" data-number="11"></div>
                     <div class="number number12" data-number="12"></div>
+                </div>
+                <div class="digital-display">
+                    <span id="digital-time">12:00:00 PM</span>
                 </div>
             </div>
             <div class="content-section">
