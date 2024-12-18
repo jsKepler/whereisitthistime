@@ -15,13 +15,9 @@
     }
 
     .container {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 40px;
-        border-radius: 24px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        backdrop-filter: blur(10px);
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 0 20px;
     }
 
     h1 {
@@ -96,18 +92,17 @@
     }
 
     #result li {
-        background: #f8fafc;
-        padding: 16px;
-        margin: 8px 0;
+        background: white;
+        padding: 20px;
+        margin: 10px 0;
         border-radius: 12px;
-        border: 1px solid #e2e8f0;
-        transition: all 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
     }
 
     #result li:hover {
-        background: white;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
 
     .clock {
@@ -121,6 +116,11 @@
             inset 0 0 30px rgba(0, 0, 0, 0.05);
         position: relative;
         margin: 40px auto;
+        transition: transform 0.3s ease;
+    }
+
+    .clock:hover {
+        transform: scale(1.02);
     }
 
     .hand {
@@ -172,6 +172,19 @@
         color: #2d3748;
     }
 
+    .number1 { transform: rotate(30deg) translate(0, -130px) rotate(-30deg); }
+    .number2 { transform: rotate(60deg) translate(0, -130px) rotate(-60deg); }
+    .number3 { transform: rotate(90deg) translate(0, -130px) rotate(-90deg); }
+    .number4 { transform: rotate(120deg) translate(0, -130px) rotate(-120deg); }
+    .number5 { transform: rotate(150deg) translate(0, -130px) rotate(-150deg); }
+    .number6 { transform: rotate(180deg) translate(0, -130px) rotate(-180deg); }
+    .number7 { transform: rotate(210deg) translate(0, -130px) rotate(-210deg); }
+    .number8 { transform: rotate(240deg) translate(0, -130px) rotate(-240deg); }
+    .number9 { transform: rotate(270deg) translate(0, -130px) rotate(-270deg); }
+    .number10 { transform: rotate(300deg) translate(0, -130px) rotate(-300deg); }
+    .number11 { transform: rotate(330deg) translate(0, -130px) rotate(-330deg); }
+    .number12 { transform: translate(0, -130px); }
+
     .credit {
         text-align: center;
         margin-top: 30px;
@@ -180,16 +193,17 @@
     }
 
     @media (max-width: 768px) {
-        body {
-            padding: 20px;
+        .grid-layout {
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
         .container {
-            padding: 24px;
+            padding: 0 10px;
         }
 
-        h1 {
-            font-size: 2rem;
+        body {
+            padding: 20px;
         }
 
         .clock {
@@ -197,6 +211,46 @@
             height: 250px;
             border-width: 12px;
         }
+    }
+
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: start;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .globe-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .content-section {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Add some animation to the buttons */
+    button {
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
     }
 </style>
 </head>
