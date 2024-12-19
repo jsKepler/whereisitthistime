@@ -16,8 +16,8 @@
 
     .container {
         max-width: 1400px;
-        margin: 0 auto;
-        padding: 40px;
+        margin: 20px auto;
+        padding: 20px;
     }
 
     .header-section {
@@ -348,41 +348,43 @@
 
         .container {
             padding: 5px;  /* Drastically reduced padding */
-            margin: 0;
+            margin: 10px auto;
             width: 100%;
             box-sizing: border-box;
         }
 
         .title-section {
-            margin: 0 0 15px 0;
+            margin-bottom: 20px;
             padding: 0;
         }
 
         h1 {
             font-size: 1.8rem;
             padding: 0 5px;
+            margin-bottom: 12px;
         }
 
         .subtitle {
             padding: 0 5px;
-            margin: 10px 0;
+            margin: 0 auto 12px auto;
         }
 
         .tutorial-box {
             margin: 0 0 15px 0;
             padding: 15px;
             border-radius: 12px;
+            margin-bottom: 20px;
         }
 
         .header-section {
-            margin: 0 0 15px 0;
+            margin-bottom: 20px;
             padding: 15px;
             border-radius: 12px;
         }
 
         .content-grid {
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 20px;
             margin: 0;
             padding: 0;
         }
@@ -395,6 +397,7 @@
             border-radius: 12px;
             width: 100%;
             box-sizing: border-box;
+            margin-bottom: 0;
         }
 
         .input-group {
@@ -466,6 +469,7 @@
     @media screen and (max-width: 380px) {
         .container {
             padding: 3px;  /* Minimal padding */
+            margin: 5px auto;
         }
 
         h1 {
@@ -478,6 +482,22 @@
 
         h2, .recent-searches h3 {
             font-size: 1.3rem;
+        }
+
+        .title-section {
+            margin-bottom: 15px;
+        }
+
+        .tutorial-box {
+            margin-bottom: 15px;
+        }
+
+        .header-section {
+            margin-bottom: 15px;
+        }
+
+        .content-grid {
+            gap: 15px;
         }
     }
 </style>
