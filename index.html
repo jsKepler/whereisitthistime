@@ -34,43 +34,12 @@
         transform: translateY(-1px);
     }
 
-    /* Add pattern overlay to top bar */
-    .top-bar::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: 
-            linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
-            linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%),
-            linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
-        background-size: 20px 20px;
-        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-        opacity: 0.3;
-    }
-
-    /* Add subtle background pattern */
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            radial-gradient(circle at 0% 0%, rgba(66, 153, 225, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 100% 0%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 100% 100%, rgba(66, 153, 225, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 0% 100%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
-        z-index: -1;
-    }
-
     .top-bar-content {
         width: 100%;
         padding: 0 40px;
+        display: flex;
+        align-items: center;
+        height: 100%;
     }
 
     .app-name {
@@ -144,7 +113,7 @@
         border-radius: 24px;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         padding: 30px;
-        margin: 0 40px 20px 40px;
+        margin: 0 auto 20px auto;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(66, 153, 225, 0.1);
         width: auto;
@@ -182,32 +151,42 @@
     }
 
     @media screen and (max-width: 768px) {
+        .top-bar-content {
+            padding: 0 15px;
+            justify-content: center;
+        }
+
+        .app-name {
+            font-size: 1.6rem;
+            line-height: 1.5;
+        }
+
         .header-section {
             margin: 0 15px 20px 15px;
-            max-width: min(calc(100% - 30px), 1000px);
+            max-width: calc(100% - 30px);
         }
 
-        .current-time {
-            font-size: 2.6rem;
-        }
-
-        .current-time #ampm {
-            font-size: 1.3rem;
+        .content-grid {
+            padding: 0 15px;
         }
     }
 
     @media screen and (max-width: 380px) {
+        .top-bar-content {
+            padding: 0 10px;
+        }
+
+        .app-name {
+            font-size: 1.4rem;
+        }
+
         .header-section {
             margin: 0 10px 15px 10px;
-            max-width: min(calc(100% - 20px), 1000px);
+            max-width: calc(100% - 20px);
         }
 
-        .current-time {
-            font-size: 2.2rem;
-        }
-
-        .current-time #ampm {
-            font-size: 1.1rem;
+        .content-grid {
+            padding: 0 10px;
         }
     }
 
