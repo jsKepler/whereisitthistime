@@ -162,28 +162,29 @@
 
     .number {
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         text-align: center;
-        line-height: 40px;
-        font-size: 2rem;
+        line-height: 30px;
+        font-size: 1.5rem;
         font-weight: 500;
-        color: #1a2b3b;
-        transform: translate(-50%, -50%);
+        color: #2d3748;
+        transform-origin: center;
     }
 
-    .number1 { top: 10%; left: 69%; }
-    .number2 { top: 20%; left: 85%; }
-    .number3 { top: 50%; left: 90%; }
-    .number4 { top: 80%; left: 85%; }
-    .number5 { top: 90%; left: 69%; }
-    .number6 { top: 95%; left: 50%; }
-    .number7 { top: 90%; left: 31%; }
-    .number8 { top: 80%; left: 15%; }
-    .number9 { top: 50%; left: 10%; }
-    .number10 { top: 20%; left: 15%; }
-    .number11 { top: 10%; left: 31%; }
-    .number12 { top: 5%; left: 50%; }
+    /* Positioning using a radius of 120px from center */
+    .number1 { top: calc(50% - 104px); left: calc(50% + 60px); }    /* 30° */
+    .number2 { top: calc(50% - 60px); left: calc(50% + 104px); }    /* 60° */
+    .number3 { top: 50%; left: calc(50% + 120px); }                 /* 90° */
+    .number4 { top: calc(50% + 60px); left: calc(50% + 104px); }    /* 120° */
+    .number5 { top: calc(50% + 104px); left: calc(50% + 60px); }    /* 150° */
+    .number6 { top: calc(50% + 120px); left: 50%; }                 /* 180° */
+    .number7 { top: calc(50% + 104px); left: calc(50% - 60px); }    /* 210° */
+    .number8 { top: calc(50% + 60px); left: calc(50% - 104px); }    /* 240° */
+    .number9 { top: 50%; left: calc(50% - 120px); }                 /* 270° */
+    .number10 { top: calc(50% - 60px); left: calc(50% - 104px); }   /* 300° */
+    .number11 { top: calc(50% - 104px); left: calc(50% - 60px); }   /* 330° */
+    .number12 { top: calc(50% - 120px); left: 50%; }                /* 0° */
 
     .number::before {
         content: none;
