@@ -72,35 +72,25 @@ document.getElementById('timeForm').addEventListener('submit', function(e) {
 // Add this at the beginning of your script.js file
 function updateClock() {
     const now = new Date();
-    const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
     const hours = now.getHours();
-
-    // Calculate degrees for each hand
-    const secondDegrees = ((seconds / 60) * 360);
-    const minuteDegrees = ((minutes / 60) * 360) + ((seconds/60)*6);
-    const hourDegrees = ((hours % 12) / 12 * 360) + ((minutes/60)*30);
-
-    const secondHand = document.querySelector('.second-hand');
-    const minuteHand = document.querySelector('.minute-hand');
-    const hourHand = document.querySelector('.hour-hand');
-
-    // Apply the rotations with translateX to center the hands
-    secondHand.style.transform = `translateX(-50%) rotate(${secondDegrees}deg)`;
-    minuteHand.style.transform = `translateX(-50%) rotate(${minuteDegrees}deg)`;
-    hourHand.style.transform = `translateX(-50%) rotate(${hourDegrees}deg)`;
-
-    // Update digital display
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours % 12 || 12; // Convert to 12-hour format
-    const displayMinutes = minutes.toString().padStart(2, '0');
-    const displaySeconds = seconds.toString().padStart(2, '0');
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
     
-    document.getElementById('digital-time').textContent = 
-        `${displayHours}:${displayMinutes}:${displaySeconds} ${ampm}`;
+    // Update time
+    document.getElementById('hours').textContent = (hours % 12 || 12).toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    document.getElementById('ampm').textContent = hours >= 12 ? 'PM' : 'AM';
+    
+    // Update date
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    document.getElementById('day').textContent = days[now.getDay()];
+    document.getElementById('date').textContent = `${months[now.getMonth()]} ${now.getDate()}`;
 }
 
 // Update clock every second
 setInterval(updateClock, 1000);
-// Initial call to avoid delay
+// Initial call
 updateClock();
