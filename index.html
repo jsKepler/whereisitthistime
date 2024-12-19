@@ -108,12 +108,10 @@
     .clock {
         width: 300px;
         height: 300px;
-        border: 15px solid #4299e1;
+        border: 2px solid #1a1a1a;
         border-radius: 50%;
-        background: white;
-        box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.1),
-            inset 0 0 30px rgba(0, 0, 0, 0.05);
+        background: #f5f5f5;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         position: relative;
         margin: 40px auto;
     }
@@ -126,33 +124,32 @@
         position: absolute;
         bottom: 50%;
         left: 50%;
-        transform-origin: bottom;
+        transform-origin: 50% 100%;
         border-radius: 4px;
         z-index: 10;
+        background: #1a1a1a;
     }
 
     .hour-hand {
         width: 4px;
-        height: 25%;
-        background: #2d3748;
+        height: 60px;
     }
 
     .minute-hand {
-        width: 3px;
-        height: 35%;
-        background: #4a5568;
+        width: 4px;
+        height: 90px;
     }
 
     .second-hand {
         width: 2px;
-        height: 40%;
-        background: #4299e1;
+        height: 100px;
+        background: #1a1a1a;
     }
 
     .center-dot {
         width: 12px;
         height: 12px;
-        background: #4299e1;
+        background: #1a1a1a;
         border-radius: 50%;
         position: absolute;
         top: 50%;
@@ -163,28 +160,28 @@
 
     .number {
         position: absolute;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         text-align: center;
-        line-height: 30px;
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #2d3748;
+        line-height: 40px;
+        font-size: 2rem;
+        font-weight: 500;
+        color: #1a1a1a;
         transform: translate(-50%, -50%);
     }
 
-    .number1 { top: 10%; right: 31%; }
-    .number2 { top: 20%; right: 13.5%; }
-    .number3 { top: 50%; right: 6%; }
-    .number4 { top: 80%; right: 13.5%; }
-    .number5 { top: 90%; right: 31%; }
-    .number6 { top: 94%; right: 50%; }
+    .number1 { top: 10%; left: 69%; }
+    .number2 { top: 20%; left: 85%; }
+    .number3 { top: 50%; left: 90%; }
+    .number4 { top: 80%; left: 85%; }
+    .number5 { top: 90%; left: 69%; }
+    .number6 { top: 95%; left: 50%; }
     .number7 { top: 90%; left: 31%; }
-    .number8 { top: 80%; left: 13.5%; }
-    .number9 { top: 50%; left: 6%; }
-    .number10 { top: 20%; left: 13.5%; }
+    .number8 { top: 80%; left: 15%; }
+    .number9 { top: 50%; left: 10%; }
+    .number10 { top: 20%; left: 15%; }
     .number11 { top: 10%; left: 31%; }
-    .number12 { top: 6%; right: 50%; }
+    .number12 { top: 5%; left: 50%; }
 
     .number::before {
         content: none;
@@ -352,4 +349,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
