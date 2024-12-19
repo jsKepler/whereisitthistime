@@ -72,62 +72,62 @@ document.getElementById('timeForm').addEventListener('submit', function(e) {
     addRecentSearch(hour, meridian);
 });
 
-// Add this at the beginning of your script.js file
+// Clock and Date Update Function
 function updateClock() {
     const now = new Date();
-    const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
     const hours = now.getHours();
-
-    // Update analog clock hands
-    // ... existing analog clock code ...
-
-    // Update digital display
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours % 12 || 12; // Convert to 12-hour format
-    const displayMinutes = minutes.toString().padStart(2, '0');
-    const displaySeconds = seconds.toString().padStart(2, '0');
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
     
-    document.getElementById('digital-time').textContent = 
-        `${displayHours}:${displayMinutes}:${displaySeconds} ${ampm}`;
+    // Update time
+    document.getElementById('hours').textContent = (hours % 12 || 12).toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    document.getElementById('ampm').textContent = hours >= 12 ? 'PM' : 'AM';
+    
+    // Update date
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    document.getElementById('day').textContent = days[now.getDay()];
+    document.getElementById('date').textContent = `${months[now.getMonth()]} ${now.getDate()}`;
+
+    // Update timezone
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    document.getElementById('timezone').textContent = timezone;
 }
 
-// Update clock every second
-setInterval(updateClock, 1000);
-// Initial call
-updateClock();
-
-// Add to your existing JavaScript
+// Recent Searches Function
 function addRecentSearch(hour, meridian) {
     const recentList = document.getElementById('recentSearches');
     const searchText = `${hour}:00 ${meridian}`;
     
-    // Create new list item
     const li = document.createElement('li');
     li.textContent = searchText;
     
-    // Add click handler to repeat search
     li.addEventListener('click', () => {
         document.getElementById('hourInput').value = hour;
         document.getElementById('meridianInput').value = meridian;
         document.getElementById('timeForm').dispatchEvent(new Event('submit'));
     });
     
-    // Add to top of list
     recentList.insertBefore(li, recentList.firstChild);
     
-    // Keep only last 5 searches
     while (recentList.children.length > 5) {
         recentList.removeChild(recentList.lastChild);
     }
 }
 
-// Add this to your form submit handler
+// Form Submit Handler
 document.getElementById('timeForm').addEventListener('submit', (e) => {
-    // ... existing submit code ...
-    
-    // Add to recent searches
+    e.preventDefault();
     const hour = document.getElementById('hourInput').value;
     const meridian = document.getElementById('meridianInput').value;
     addRecentSearch(hour, meridian);
+    // Your existing form submission code here
 });
+
+// Start the clock
+setInterval(updateClock, 1000);
+// Initial call to avoid delay
+updateClock();
