@@ -344,31 +344,37 @@
 
     @media screen and (max-width: 768px) {
         .container {
-            padding: 20px;  /* Reduced padding for mobile */
+            padding: 10px;  /* Reduced side padding */
+            max-width: 100%;
         }
 
         .title-section {
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 2.5rem;  /* Smaller title for mobile */
-            margin-bottom: 15px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            padding: 0 10px;
+            margin-bottom: 20px;
+            padding: 0 5px;  /* Minimal side padding */
         }
 
         .tutorial-box {
-            margin: 0 10px 30px 10px;
-            padding: 20px;
+            margin: 0 5px 20px 5px;  /* Reduced side margins */
+            padding: 20px 15px;
         }
 
         .header-section {
-            padding: 20px;
-            margin-bottom: 30px;
+            padding: 20px 15px;
+            margin: 0 5px 20px 5px;  /* Reduced side margins */
+            border-radius: 16px;  /* Slightly reduced border radius for mobile */
+        }
+
+        .content-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 0 5px;  /* Minimal side padding */
+        }
+
+        .converter-card, .recent-searches, .results-section {
+            padding: 20px 15px;
+            margin: 0;
+            border-radius: 16px;
+            width: auto;
         }
 
         .time-info {
@@ -383,17 +389,6 @@
 
         .date-timezone {
             text-align: center;
-        }
-
-        .content-grid {
-            grid-template-columns: 1fr;  /* Stack columns on mobile */
-            gap: 20px;
-        }
-
-        .converter-card, .recent-searches, .results-section {
-            padding: 20px;
-            margin: 0;
-            width: auto;
         }
 
         .input-group {
@@ -429,6 +424,14 @@
 
     /* Additional optimization for very small screens */
     @media screen and (max-width: 380px) {
+        .container {
+            padding: 8px;  /* Even smaller padding for very small screens */
+        }
+
+        .converter-card, .recent-searches, .results-section {
+            padding: 15px 12px;
+        }
+
         h1 {
             font-size: 2rem;
         }
