@@ -144,10 +144,122 @@
             font-size: 3rem;
         }
     }
+
+    .title-section {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #1a2b3b;
+        margin-bottom: 20px;
+        letter-spacing: -1px;
+        background: linear-gradient(135deg, #1a2b3b 0%, #4299e1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        color: #64748b;
+        margin-bottom: 30px;
+        line-height: 1.5;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tutorial-box {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    .tutorial-box h3 {
+        color: #1a2b3b;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .tutorial-box ol {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .tutorial-box li {
+        color: #4a5568;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    .example {
+        background: #f8fafc;
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+        color: #4a5568;
+    }
+
+    .example-label {
+        font-weight: 600;
+        color: #4299e1;
+    }
+
+    .credits {
+        text-align: center;
+        margin-top: 60px;
+        padding: 20px;
+        color: #64748b;
+        font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            padding: 0 20px;
+        }
+
+        .tutorial-box {
+            margin: 0 20px 40px 20px;
+        }
+    }
 </style>
 </head>
 <body>
     <div class="container">
+        <div class="title-section">
+            <h1>Time to Location Converter</h1>
+            <div class="subtitle">
+                Find places around the world where it's currently the time you're looking for.
+            </div>
+            <div class="tutorial-box">
+                <h3>How to use:</h3>
+                <ol>
+                    <li>Select an hour (1-12) from the dropdown below</li>
+                    <li>Choose AM or PM</li>
+                    <li>Click "Find Locations" to see all places where it's currently that time</li>
+                </ol>
+                <div class="example">
+                    <span class="example-label">Example:</span> 
+                    Select "2 PM" to find all locations where it's currently 2:00 PM
+                </div>
+            </div>
+        </div>
+
         <div class="header-section">
             <div class="time-info">
                 <div class="current-time">
@@ -205,6 +317,10 @@
                 <ul id="result"></ul>
             </div>
         </div>
+
+        <footer class="credits">
+            <p>Created by Xirui Lin</p>
+        </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
