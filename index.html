@@ -188,12 +188,23 @@
         }
 
         .header-section {
-            margin: 0 15px 20px 15px;
-            max-width: calc(100% - 30px);
+            margin: 0 auto 20px auto;
+            max-width: min(calc(100% - 30px), 500px);
         }
 
         .content-grid {
-            padding: 0 15px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 0;
+            margin: 0 auto;
+            max-width: min(calc(100% - 30px), 500px);
+        }
+
+        .converter-card, 
+        .recent-searches, 
+        .results-section {
+            width: 100%;
+            margin: 0 auto;
         }
     }
 
@@ -207,12 +218,12 @@
         }
 
         .header-section {
-            margin: 0 10px 15px 10px;
-            max-width: calc(100% - 20px);
+            margin: 0 auto 15px auto;
+            max-width: min(calc(100% - 20px), 500px);
         }
 
         .content-grid {
-            padding: 0 10px;
+            max-width: min(calc(100% - 20px), 500px);
         }
     }
 
@@ -468,7 +479,19 @@
         }
 
         .tutorial-box {
-            margin: 0 20px 40px 20px;
+            margin: 0 auto 20px auto;
+            max-width: min(calc(100% - 30px), 500px);
+        }
+    }
+
+    @media screen and (max-width: 380px) {
+        .tutorial-box {
+            margin: 0 auto 15px auto;
+            max-width: min(calc(100% - 20px), 500px);
+        }
+
+        .content-grid {
+            max-width: min(calc(100% - 20px), 500px);
         }
     }
 
@@ -811,25 +834,44 @@
 
     @media screen and (max-width: 768px) {
         .header-section {
-            margin: 0 15px 20px 15px;
-            max-width: calc(100% - 30px);
+            margin: 0 auto 20px auto;
+            max-width: min(calc(100% - 30px), 500px);
+        }
+
+        .tutorial-box {
+            margin: 0 auto 20px auto;
+            max-width: min(calc(100% - 30px), 500px);
         }
 
         .content-grid {
-            padding: 0 15px;
+            grid-template-columns: 1fr;
             gap: 20px;
+            padding: 0;
+            margin: 0 auto;
+            max-width: min(calc(100% - 30px), 500px);
+        }
+
+        .converter-card, 
+        .recent-searches, 
+        .results-section {
+            width: 100%;
+            margin: 0 auto;
         }
     }
 
     @media screen and (max-width: 380px) {
         .header-section {
-            margin: 0 10px 15px 10px;
-            max-width: calc(100% - 20px);
+            margin: 0 auto 15px auto;
+            max-width: min(calc(100% - 20px), 500px);
+        }
+
+        .tutorial-box {
+            margin: 0 auto 15px auto;
+            max-width: min(calc(100% - 20px), 500px);
         }
 
         .content-grid {
-            padding: 0 10px;
-            gap: 15px;
+            max-width: min(calc(100% - 20px), 500px);
         }
     }
 
@@ -998,4 +1040,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
     <script src="script.js"></script>
 </body>
+</html>
 </html>
