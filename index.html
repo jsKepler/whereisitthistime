@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time to Location Converter</title>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         margin: 0;
         padding: 0;
         background: #f8fafc;
-        min-height: 100vh;
-        color: #1a2b3b;
         width: 100%;
         overflow-x: hidden;
+        position: relative;
     }
 
     .top-bar {
         background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
         padding: 20px 0;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        width: 100vw;
-        margin: 0;
-        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        margin: -8px 0 0 -8px; /* Offset default browser margins */
+        padding-right: 16px; /* Compensate for offset */
     }
 
     .top-bar-content {
@@ -594,6 +594,86 @@
 
         select {
             width: 100%;
+        }
+    }
+
+    /* Fix converter box */
+    .converter-card, .recent-searches, .results-section {
+        padding: 25px 30px;
+        width: 100%;
+        overflow: hidden; /* Prevent content overflow */
+    }
+
+    .converter-form {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .input-group {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    select {
+        flex: 1;
+        min-width: 100px;
+        max-width: 150px;
+        padding: 12px 20px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+    }
+
+    button {
+        display: block;
+        width: auto;
+        padding: 12px 24px;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        .top-bar {
+            margin: -8px 0 0 -8px;
+            padding-right: 16px;
+        }
+
+        .converter-card, .recent-searches, .results-section {
+            padding: 20px;
+            margin: 0 10px;
+        }
+
+        .input-group {
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        select {
+            flex: 1;
+            max-width: none;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 380px) {
+        .converter-card, .recent-searches, .results-section {
+            padding: 15px;
+            margin: 0 6px;
+        }
+
+        .input-group {
+            flex-direction: column;
+        }
+
+        select {
+            width: 100%;
+            max-width: none;
         }
     }
 </style>
