@@ -92,15 +92,23 @@ function updateClock() {
     document.getElementById('day').textContent = days[now.getDay()];
     document.getElementById('date').textContent = `${months[now.getMonth()]} ${now.getDate()}`;
 
-    // Update timezone
+    // Update timezone with UTC offset
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    document.getElementById('timezone').textContent = timezone;
+    const utcOffset = -(new Date().getTimezoneOffset() / 60);
+    const utcString = `UTC${utcOffset >= 0 ? '+' : ''}${utcOffset}`;
+    document.getElementById('timezone').textContent = `${timezone} (${utcString})`;
 }
 
 // Recent Searches Function
 function addRecentSearch(hour, meridian) {
     const recentList = document.getElementById('recentSearches');
     const searchText = `${hour}:00 ${meridian}`;
+    
+    // Check if this search already exists
+    const existingSearches = Array.from(recentList.children);
+    if (existingSearches.some(li => li.textContent === searchText)) {
+        return; // Skip if already in list
+    }
     
     const li = document.createElement('li');
     li.textContent = searchText;
