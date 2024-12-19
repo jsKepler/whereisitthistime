@@ -53,7 +53,11 @@
     }
 
     .container {
-        margin-top: calc(60px + 40px);
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     .title-section {
@@ -220,9 +224,9 @@
         display: grid;
         grid-template-columns: minmax(300px, 400px) 1fr;
         gap: 20px;
-        padding: 0 40px;
-        max-width: 1400px;
+        max-width: min(calc(100% - 80px), 1000px);
         margin: 0 auto;
+        padding: 0;
     }
 
     .converter-section {
@@ -407,15 +411,13 @@
     }
 
     .tutorial-box {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 25px 30px;
+        background: white;
         border-radius: 24px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        margin: 0 auto 40px auto;
+        max-width: min(calc(100% - 80px), 1000px);
+        border: 1px solid rgba(66, 153, 225, 0.1);
     }
 
     .tutorial-box h3 {
