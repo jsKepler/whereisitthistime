@@ -16,22 +16,26 @@
 
     .top-bar {
         background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
-        padding: 15px 0;
+        padding: 20px 0;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         position: sticky;
         top: 0;
         z-index: 1000;
+        width: 100%;
+        margin: 0;
     }
 
     .top-bar-content {
         max-width: 1400px;
         margin: 0 auto;
         padding: 0 40px;
+        display: flex;
+        align-items: center;
     }
 
     .app-name {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: 600;
         letter-spacing: 0.5px;
     }
@@ -362,8 +366,16 @@
     }
 
     @media screen and (max-width: 768px) {
+        .top-bar {
+            padding: 18px 0;
+        }
+
         .top-bar-content {
-            padding: 0 15px;
+            padding: 0 20px;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
         }
 
         .container {
