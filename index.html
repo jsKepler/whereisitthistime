@@ -80,6 +80,12 @@
             height: 55px;
             display: flex;
             align-items: center;
+            position: fixed;
+            left: -1px;
+            right: -1px;
+            top: -1px;
+            width: calc(100% + 2px);
+            margin: 0;
         }
 
         .top-bar-content {
@@ -92,7 +98,7 @@
 
         .app-name {
             font-size: 1.6rem;
-            padding-top: 2px;
+            transform: translateY(2px);
         }
 
         .title-section {
@@ -128,6 +134,7 @@
 
         .app-name {
             font-size: 1.4rem;
+            transform: translateY(1px);
         }
 
         .title-section {
