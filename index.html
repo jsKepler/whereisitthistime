@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time to Location Converter</title>
 <style>
+    /* Add body reset for all screen sizes */
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -960,6 +969,79 @@
             font-size: 0.85rem;
         }
     }
+
+    .find-locations-btn {
+        background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .find-locations-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+    }
+
+    .find-locations-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(66, 153, 225, 0.3);
+    }
+
+    /* Add shine effect */
+    .find-locations-btn::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            45deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+    }
+
+    .find-locations-btn:hover::after {
+        animation: shine 1.5s infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+            transform: translateX(100%) rotate(45deg);
+        }
+    }
+
+    .recent-searches-info {
+        color: #64748b;
+        font-size: 0.9rem;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px dashed rgba(66, 153, 225, 0.2);
+        font-style: italic;
+    }
+
+    @media screen and (max-width: 768px) {
+        .recent-searches-info {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            padding-top: 12px;
+        }
+    }
 </style>
 </head>
 <body>
@@ -1037,7 +1119,7 @@
                                     <option value="PM">PM</option>
                                 </select>
                             </div>
-                            <button type="submit">Find Locations</button>
+                            <button type="submit" class="find-locations-btn">Find Locations</button>
                         </form>
                     </div>
                 </div>
@@ -1046,6 +1128,9 @@
                     <ul id="recentSearches">
                         <!-- Will be populated by JavaScript -->
                     </ul>
+                    <div class="recent-searches-info">
+                        💡 Tip: Click on any recent search to instantly search for that time again
+                    </div>
                 </div>
             </div>
             
