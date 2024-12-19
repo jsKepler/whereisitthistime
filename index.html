@@ -18,18 +18,19 @@
         background: #f8fafc;
         width: 100%;
         overflow-x: hidden;
+        position: relative;
     }
 
     .top-bar {
         background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
         padding: 20px 0;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        position: relative;
+        position: fixed;
         width: 100vw;
-        left: 0;
-        top: 0;
+        left: -1px;
+        top: -1px;
         margin: 0;
-        transform: translateX(0);
+        z-index: 1000;
     }
 
     .top-bar-content {
@@ -45,9 +46,59 @@
     }
 
     .container {
-        max-width: 1400px;
-        margin: 30px auto;
-        padding: 0 40px;
+        margin-top: calc(60px + 40px);
+    }
+
+    .title-section {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        margin-bottom: 35px;
+        font-size: 3.5rem;
+    }
+
+    .subtitle {
+        margin: 0 auto 35px auto;
+        line-height: 1.5;
+        max-width: 800px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .top-bar {
+            padding: 18px 0;
+        }
+
+        .container {
+            margin-top: calc(54px + 30px);
+        }
+
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        .subtitle {
+            margin: 0 auto 25px auto;
+        }
+    }
+
+    @media screen and (max-width: 380px) {
+        .top-bar {
+            padding: 15px 0;
+        }
+
+        .container {
+            margin-top: calc(48px + 25px);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            margin: 0 auto 20px auto;
+        }
     }
 
     .header-section {
@@ -271,30 +322,6 @@
         .results-section {
             max-height: 400px;
         }
-    }
-
-    .title-section {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: #1a2b3b;
-        margin-bottom: 25px;
-        letter-spacing: -1px;
-        background: linear-gradient(135deg, #1a2b3b 0%, #4299e1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-        font-size: 1.5rem;
-        color: #64748b;
-        margin: 0 auto 25px auto;
-        line-height: 1.5;
-        max-width: 800px;
     }
 
     .tutorial-box {
