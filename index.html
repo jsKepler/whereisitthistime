@@ -138,12 +138,26 @@
             text-align: center;
             gap: 10px;
             width: 100%;
+            padding: 0;
         }
 
         .current-time {
             font-size: 3rem;
             text-align: center;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .current-time span {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .current-time #ampm {
+            margin-left: 10px;
         }
 
         .date-timezone {
