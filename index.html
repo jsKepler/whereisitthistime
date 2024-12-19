@@ -343,109 +343,96 @@
     }
 
     @media screen and (max-width: 768px) {
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         .container {
-            padding: 10px;  /* Reduced side padding */
-            max-width: 100%;
+            padding: 5px;  /* Drastically reduced padding */
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .title-section {
-            margin-bottom: 20px;
-            padding: 0 5px;  /* Minimal side padding */
+            margin: 0 0 15px 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            padding: 0 5px;
+        }
+
+        .subtitle {
+            padding: 0 5px;
+            margin: 10px 0;
         }
 
         .tutorial-box {
-            margin: 0 5px 20px 5px;  /* Reduced side margins */
-            padding: 20px 15px;
+            margin: 0 0 15px 0;
+            padding: 15px;
+            border-radius: 12px;
         }
 
         .header-section {
-            padding: 20px 15px;
-            margin: 0 5px 20px 5px;  /* Reduced side margins */
-            border-radius: 16px;  /* Slightly reduced border radius for mobile */
+            margin: 0 0 15px 0;
+            padding: 15px;
+            border-radius: 12px;
         }
 
         .content-grid {
             grid-template-columns: 1fr;
             gap: 15px;
-            padding: 0 5px;  /* Minimal side padding */
-        }
-
-        .converter-card, .recent-searches, .results-section {
-            padding: 20px 15px;
             margin: 0;
-            border-radius: 16px;
-            width: auto;
+            padding: 0;
         }
 
-        .time-info {
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .current-time {
-            font-size: 3rem;  /* Slightly smaller time display */
-        }
-
-        .date-timezone {
-            text-align: center;
+        .converter-card, 
+        .recent-searches, 
+        .results-section {
+            padding: 15px;
+            margin: 0 0 15px 0;
+            border-radius: 12px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .input-group {
-            flex-direction: row;  /* Keep inputs side by side */
-            gap: 10px;
+            gap: 8px;
         }
 
         select {
-            padding: 10px 15px;
-            font-size: 1rem;
-            min-width: 100px;
+            padding: 10px;
         }
 
-        button {
-            width: 100%;  /* Full width button on mobile */
+        #result li, 
+        #recentSearches li {
             padding: 12px;
-            margin-top: 10px;
-        }
-
-        #result li, #recentSearches li {
-            padding: 12px;
-            font-size: 0.95rem;
+            margin: 8px 0;
+            border-radius: 8px;
         }
 
         .results-section {
-            max-height: 400px;  /* Shorter results section on mobile */
-        }
-
-        .credits {
-            margin-top: 30px;
+            margin-bottom: 0;
         }
     }
 
-    /* Additional optimization for very small screens */
+    /* Even smaller screens */
     @media screen and (max-width: 380px) {
         .container {
-            padding: 8px;  /* Even smaller padding for very small screens */
-        }
-
-        .converter-card, .recent-searches, .results-section {
-            padding: 15px 12px;
+            padding: 3px;  /* Minimal padding */
         }
 
         h1 {
             font-size: 2rem;
         }
 
-        .current-time {
-            font-size: 2.5rem;
-        }
-
-        .input-group {
-            flex-direction: column;  /* Stack inputs on very small screens */
-        }
-
-        select {
-            width: 100%;
+        .converter-card, 
+        .recent-searches, 
+        .results-section {
+            padding: 12px;
         }
     }
 </style>
