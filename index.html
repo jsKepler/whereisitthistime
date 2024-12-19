@@ -147,6 +147,8 @@
         margin: 0 40px;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(66, 153, 225, 0.1);
+        width: auto;
+        box-sizing: border-box;
     }
 
     /* Add subtle animation to background */
@@ -186,20 +188,19 @@
 
     .time-info {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 15px;
+        justify-content: space-between;
+        gap: 20px;
     }
 
     .current-time {
-        text-align: center;
+        text-align: left;
+        font-size: 3rem;
     }
 
     .date-timezone {
-        text-align: center;
-        width: 100%;
+        text-align: right;
     }
 
     .current-date {
